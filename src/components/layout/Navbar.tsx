@@ -6,13 +6,27 @@ export default function Navbar() {
           Adnan<span className="text-blue-500">.</span>
         </h1>
 
-        <ul className="flex gap-8 text-sm">
-          <li>About</li>
-          <li>Skills</li>
-          <li>Projects</li>
-          <li>Research</li>
-          <li>Contact</li>
+        <ul className="hidden gap-8 text-sm md:flex">
+          <li className="cursor-pointer hover:text-blue-400 transition">
+            About
+          </li>
+          <li className="cursor-pointer hover:text-blue-400 transition">
+            Skills
+          </li>
+          <li className="cursor-pointer hover:text-blue-400 transition">
+            Projects
+          </li>
+          <li className="cursor-pointer hover:text-blue-400 transition">
+            Research
+          </li>
+          <li className="cursor-pointer hover:text-blue-400 transition">
+            Contact
+          </li>
         </ul>
+
+        <button className="rounded-md border border-gray-700 px-3 py-2 text-sm md:hidden">
+          ☰
+        </button>
       </div>
     </nav>
   );
