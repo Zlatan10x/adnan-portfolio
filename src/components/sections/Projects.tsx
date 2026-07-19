@@ -1,14 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
+
 import {
   FaGithub,
   FaArrowRight,
   FaJava,
-  FaPython,
   FaRobot,
   FaCubes,
   FaNetworkWired,
+  FaReact,
+  FaDrone,
 } from "react-icons/fa";
 
 import {
@@ -16,55 +19,90 @@ import {
   SiMysql,
   SiGooglesheets,
   SiN8N,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiTypescript,
+  SiFusion360,
 } from "react-icons/si";
 
 const projects = [
   {
     title: "UIU Iron Slug Multiplayer",
+    image: "/projects/ironslug.png",
     description:
-      "A multiplayer 2D action game inspired by Metal Slug. Built using Java, Spring Boot and WebSockets with synchronized gameplay, enemy AI and boss battles.",
+      "A multiplayer 2D action game inspired by Metal Slug. Built using Java, Spring Boot and WebSockets featuring synchronized gameplay, enemy AI, boss battles and multiplayer networking.",
+
     technologies: [
       { name: "Java", icon: <FaJava /> },
       { name: "Spring Boot", icon: <SiSpringboot /> },
       { name: "WebSocket", icon: <FaNetworkWired /> },
       { name: "MySQL", icon: <SiMysql /> },
     ],
+
     github: "https://github.com/Zlatan10x",
     demo: "#",
   },
 
   {
-    title: "Supply Chain AI",
+    title: "Frontend Development",
+    image: "/projects/frontend.png",
     description:
-      "AI powered supply chain management platform built during a hackathon. Uses intelligent automation to streamline inventory, logistics and order management.",
+      "Modern responsive web applications built using Next.js, React and Tailwind CSS with smooth animations, reusable components and performance-focused design.",
+
     technologies: [
-      { name: "Python", icon: <FaPython /> },
-      { name: "AI", icon: <FaRobot /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "React", icon: <FaReact /> },
+      { name: "Tailwind", icon: <SiTailwindcss /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
     ],
+
     github: "https://github.com/Zlatan10x",
     demo: "#",
   },
 
   {
-    title: "Automation Workflows",
+    title: "AI Automation Workflows",
+    image: "/projects/automation.png",
     description:
-      "AI-powered business automations built using n8n, OpenRouter and Google Sheets. Includes restaurant order processing, summaries and workflow automation.",
+      "Business automation workflows built using n8n, OpenRouter and Google Sheets. Includes AI-powered restaurant order processing, data extraction and workflow automation.",
+
     technologies: [
       { name: "n8n", icon: <SiN8N /> },
       { name: "Google Sheets", icon: <SiGooglesheets /> },
       { name: "AI", icon: <FaRobot /> },
     ],
+
     github: "https://github.com/Zlatan10x",
     demo: "#",
   },
 
   {
     title: "Fusion 360 Designs",
+    image: "/projects/fusion360.png",
     description:
-      "Mechanical CAD designs including UAV components, tablet mounts and engineering prototypes created in Autodesk Fusion 360.",
+      "Mechanical CAD designs including UAV components, engineering prototypes and precision product designs created in Autodesk Fusion 360.",
+
     technologies: [
-      { name: "Fusion 360", icon: <FaCubes /> },
+      { name: "Fusion 360", icon: <SiFusion360 /> },
+      { name: "CAD Design", icon: <FaCubes /> },
     ],
+
+    github: "https://github.com/Zlatan10x",
+    demo: "#",
+  },
+
+  {
+    title: "Autonomous UAV",
+    image: "/projects/uav.png",
+    description:
+      "Designed and developed an autonomous UAV for engineering competitions featuring mechanical design, payload systems, structural analysis and computer vision integration.",
+
+    technologies: [
+      { name: "Fusion 360", icon: <SiFusion360 /> },
+      { name: "Computer Vision", icon: <FaRobot /> },
+      { name: "UAV", icon: <FaDrone /> },
+    ],
+
     github: "https://github.com/Zlatan10x",
     demo: "#",
   },
@@ -88,12 +126,13 @@ export default function Projects() {
 
         <p className="text-gray-400 text-lg max-w-2xl mb-16">
           A collection of software engineering, AI automation,
-          mechanical design and research projects that showcase my
-          passion for solving real-world problems.
+          frontend development, mechanical engineering and research
+          projects showcasing my passion for building impactful
+          solutions.
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
@@ -110,10 +149,13 @@ export default function Projects() {
             }}
             className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-xl hover:border-blue-500 transition-all"
           >
-            <div className="h-56 bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
-              <span className="text-gray-500 text-lg">
-                Project Preview
-              </span>
+            <div className="relative h-60 overflow-hidden">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover transition duration-500 hover:scale-105"
+              />
             </div>
 
             <div className="p-8">
@@ -134,6 +176,7 @@ export default function Projects() {
                     <span className="text-blue-400 text-lg">
                       {tech.icon}
                     </span>
+
                     {tech.name}
                   </div>
                 ))}
