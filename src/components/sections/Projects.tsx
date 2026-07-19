@@ -6,85 +6,34 @@ import { motion } from "motion/react";
 import {
   FaGithub,
   FaArrowRight,
-  FaJava,
-  FaRobot,
-  FaCubes,
-  FaNetworkWired,
-  FaReact,
-  FaDrone,
+  FaCalendarAlt,
 } from "react-icons/fa";
 
-import {
-  SiSpringboot,
-  SiMysql,
-  SiGooglesheets,
-  SiN8N,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiTypescript,
-  SiFusion360,
-} from "react-icons/si";
+type Project = {
+  title: string;
+  category: string;
+  year: string;
+  image: string;
+  description: string;
+  technologies: string[];
+  github: string;
+  demo: string;
+};
 
-const projects = [
+const projects: Project[] = [
   {
     title: "UIU Iron Slug Multiplayer",
-    image: "/projects/ironslug.png",
+    category: "Software Engineering",
+    year: "2026",
+    image: "/images/projects/ironslug.png",
     description:
-      "A multiplayer 2D action game inspired by Metal Slug. Built using Java, Spring Boot and WebSockets featuring synchronized gameplay, enemy AI, boss battles and multiplayer networking.",
+      "A multiplayer side-scrolling action game inspired by Metal Slug featuring real-time networking, synchronized gameplay, enemy AI, bosses, power-ups and multiplayer support built using Java and Spring Boot.",
 
     technologies: [
-      { name: "Java", icon: <FaJava /> },
-      { name: "Spring Boot", icon: <SiSpringboot /> },
-      { name: "WebSocket", icon: <FaNetworkWired /> },
-      { name: "MySQL", icon: <SiMysql /> },
-    ],
-
-    github: "https://github.com/Zlatan10x",
-    demo: "#",
-  },
-
-  {
-    title: "Frontend Development",
-    image: "/projects/frontend.png",
-    description:
-      "Modern responsive web applications built using Next.js, React and Tailwind CSS with smooth animations, reusable components and performance-focused design.",
-
-    technologies: [
-      { name: "Next.js", icon: <SiNextdotjs /> },
-      { name: "React", icon: <FaReact /> },
-      { name: "Tailwind", icon: <SiTailwindcss /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
-    ],
-
-    github: "https://github.com/Zlatan10x",
-    demo: "#",
-  },
-
-  {
-    title: "AI Automation Workflows",
-    image: "/projects/automation.png",
-    description:
-      "Business automation workflows built using n8n, OpenRouter and Google Sheets. Includes AI-powered restaurant order processing, data extraction and workflow automation.",
-
-    technologies: [
-      { name: "n8n", icon: <SiN8N /> },
-      { name: "Google Sheets", icon: <SiGooglesheets /> },
-      { name: "AI", icon: <FaRobot /> },
-    ],
-
-    github: "https://github.com/Zlatan10x",
-    demo: "#",
-  },
-
-  {
-    title: "Fusion 360 Designs",
-    image: "/projects/fusion360.png",
-    description:
-      "Mechanical CAD designs including UAV components, engineering prototypes and precision product designs created in Autodesk Fusion 360.",
-
-    technologies: [
-      { name: "Fusion 360", icon: <SiFusion360 /> },
-      { name: "CAD Design", icon: <FaCubes /> },
+      "Java",
+      "Spring Boot",
+      "WebSocket",
+      "MySQL",
     ],
 
     github: "https://github.com/Zlatan10x",
@@ -93,14 +42,74 @@ const projects = [
 
   {
     title: "Autonomous UAV",
-    image: "/projects/uav.png",
+    category: "Mechanical Engineering",
+    year: "2026",
+    image: "/images/projects/uav.png",
     description:
-      "Designed and developed an autonomous UAV for engineering competitions featuring mechanical design, payload systems, structural analysis and computer vision integration.",
+      "Designed and developed an autonomous UAV for engineering competitions including structural design, payload mechanisms, CAD modelling, computer vision integration and flight system development.",
 
     technologies: [
-      { name: "Fusion 360", icon: <SiFusion360 /> },
-      { name: "Computer Vision", icon: <FaRobot /> },
-      { name: "UAV", icon: <FaDrone /> },
+      "Fusion 360",
+      "PX4",
+      "Jetson",
+      "Computer Vision",
+    ],
+
+    github: "https://github.com/Zlatan10x",
+    demo: "#",
+  },
+
+  {
+    title: "AI Automation Workflows",
+    category: "Artificial Intelligence",
+    year: "2026",
+    image: "/images/projects/automation.png",
+    description:
+      "Business automation workflows developed using n8n and OpenRouter APIs including intelligent restaurant order processing, webhook automation and Google Sheets integration.",
+
+    technologies: [
+      "n8n",
+      "OpenRouter",
+      "Google Sheets",
+      "Automation",
+    ],
+
+    github: "https://github.com/Zlatan10x",
+    demo: "#",
+  },
+
+  {
+    title: "Frontend Development",
+    category: "Web Development",
+    year: "2026",
+    image: "/images/projects/frontend.png",
+    description:
+      "Modern responsive websites built with Next.js, React, Tailwind CSS and TypeScript focusing on clean UI, reusable components, responsive layouts and smooth user experiences.",
+
+    technologies: [
+      "Next.js",
+      "React",
+      "Tailwind",
+      "TypeScript",
+    ],
+
+    github: "https://github.com/Zlatan10x",
+    demo: "#",
+  },
+
+  {
+    title: "Fusion 360 Mechanical Designs",
+    category: "Product Design",
+    year: "2026",
+    image: "/images/projects/fusion360.png",
+    description:
+      "Collection of mechanical engineering projects including tablet mounts, UAV parts, housings, fixtures and precision CAD models created using Autodesk Fusion 360.",
+
+    technologies: [
+      "Fusion 360",
+      "CAD",
+      "Rendering",
+      "Mechanical Design",
     ],
 
     github: "https://github.com/Zlatan10x",
@@ -112,98 +121,182 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-28 px-6 max-w-7xl mx-auto"
+      className="section py-32"
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
         viewport={{ once: true }}
+        transition={{ duration: .6 }}
+        className="mb-20"
       >
-        <h2 className="text-5xl font-bold mb-4">
+        <p className="mb-3 font-semibold uppercase tracking-[0.3em] text-blue-500">
+          Portfolio
+        </p>
+
+        <h2 className="text-gradient text-5xl font-black md:text-6xl">
           Featured Projects
         </h2>
 
-        <p className="text-gray-400 text-lg max-w-2xl mb-16">
-          A collection of software engineering, AI automation,
-          frontend development, mechanical engineering and research
-          projects showcasing my passion for building impactful
-          solutions.
+        <p className="mt-8 max-w-3xl text-lg leading-8 text-gray-400">
+          A selection of software engineering, AI automation,
+          frontend development and engineering projects that
+          demonstrate practical problem solving and product
+          development.
         </p>
       </motion.div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div  className="grid gap-8 lg:grid-cols-2">
+
         {projects.map((project, index) => (
+
           <motion.div
             key={project.title}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.1,
-            }}
             viewport={{ once: true }}
-            whileHover={{
-              y: -8,
-              scale: 1.02,
+            transition={{
+              duration: .6,
+              delay: index * .08,
             }}
-            className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-xl hover:border-blue-500 transition-all"
+            className="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-blue-500/10"
           >
-            <div className="relative h-60 overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover transition duration-500 hover:scale-105"
-              />
-            </div>
 
-            <div className="p-8">
-              <h3 className="text-2xl font-bold mb-4">
-                {project.title}
-              </h3>
+            <div>
 
-              <p className="text-gray-400 leading-7 mb-6">
-                {project.description}
-              </p>
+                            {/* LEFT IMAGE */}
 
-              <div className="flex flex-wrap gap-3 mb-8">
-                {project.technologies.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="flex items-center gap-2 bg-black px-4 py-2 rounded-full text-sm border border-zinc-700"
-                  >
-                    <span className="text-blue-400 text-lg">
-                      {tech.icon}
-                    </span>
+              <div className="relative h-40 overflow-hidden bg-zinc-950">
 
-                    {tech.name}
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={900}
+                  height={700}
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+                <div className="absolute left-8 top-8">
+
+                  <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-300">
+
+                    {project.category}
+
+                  </span>
+
+                </div>
+
+              </div>
+
+              {/* RIGHT CONTENT */}
+
+              <div className="p-6">
+
+                <div>
+
+                  <div className="mb-6 flex items-center gap-3 text-gray-400">
+
+                    <FaCalendarAlt />
+
+                    <span>{project.year}</span>
+
                   </div>
-                ))}
-              </div>
 
-              <div className="flex gap-4">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 px-5 py-3 rounded-xl transition"
-                >
-                  <FaGithub />
-                  GitHub
-                </a>
+                  <h3 className="mb-4 text-2xl font-bold text-white">
 
-                <a
-                  href={project.demo}
-                  className="flex items-center gap-2 border border-zinc-700 hover:border-blue-500 px-5 py-3 rounded-xl transition"
-                >
-                  View Project
-                  <FaArrowRight />
-                </a>
+                    {project.title}
+
+                  </h3>
+
+                  <p className="text-gray-400 leading-7">
+
+                    {project.description}
+
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+
+                    {project.technologies.map((tech) => (
+
+                      <span
+                        key={tech}
+                        className="tech-tag rounded-full px-5 py-2 text-sm text-gray-300"
+                      >
+                        {tech}
+                      </span>
+
+                    ))}
+
+                  </div>
+
+                </div>
+
+                <div className="mt-8 flex gap-3">
+
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    className="flex items-center gap-3 rounded-xl bg-blue-600 px-6 py-4 font-semibold text-white transition duration-300 hover:scale-105 hover:bg-blue-500"
+                  >
+
+                    <FaGithub />
+
+                    GitHub
+
+                  </a>
+
+                  <a
+                    href={project.demo}
+                    className="flex items-center gap-3 rounded-xl border border-zinc-700 px-6 py-4 font-semibold text-white transition duration-300 hover:border-blue-500"
+                  >
+
+                    View Project
+
+                    <FaArrowRight />
+
+                  </a>
+
+                </div>
+
               </div>
-            </div>
+                          </div>
+
           </motion.div>
+
         ))}
+
       </div>
+
+      {/* Bottom CTA */}
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: .6 }}
+        className="mt-28 text-center"
+      >
+
+        <p className="mb-6 text-lg text-gray-400">
+          Interested in seeing more of my work?
+        </p>
+
+        <a
+          href="https://github.com/Zlatan10x"
+          target="_blank"
+          className="inline-flex items-center gap-3 rounded-2xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white transition duration-300 hover:scale-105 hover:bg-blue-500"
+        >
+
+          <FaGithub />
+
+          Visit My GitHub
+
+        </a>
+
+      </motion.div>
+
     </section>
   );
 }
