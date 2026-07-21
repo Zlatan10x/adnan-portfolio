@@ -119,154 +119,110 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="section py-32"
-    >
+    <section id="projects" className="section py-28 md:py-32">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: .6 }}
-        className="mb-20"
+        transition={{ duration: 0.6 }}
+        className="mb-14 md:mb-16"
       >
         <p className="mb-3 font-semibold uppercase tracking-[0.3em] text-blue-500">
           Portfolio
         </p>
 
-        <h2 className="text-gradient text-5xl font-black md:text-6xl">
+        <h2 className="text-gradient text-4xl font-black sm:text-5xl md:text-6xl">
           Featured Projects
         </h2>
 
-        <p className="mt-8 max-w-3xl text-lg leading-8 text-gray-400">
-          A selection of software engineering, AI automation,
-          frontend development and engineering projects that
-          demonstrate practical problem solving and product
-          development.
+        <p className="mt-6 max-w-3xl text-base leading-7 text-gray-400 sm:text-lg">
+          A selection of software engineering, AI automation, frontend
+          development and engineering projects that demonstrate practical
+          problem solving and product development.
         </p>
       </motion.div>
 
-      <div  className="grid gap-8 lg:grid-cols-2">
-
+      <div className="grid gap-6 lg:grid-cols-2">
         {projects.map((project, index) => (
-
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{
-              duration: .6,
-              delay: index * .08,
+              duration: 0.6,
+              delay: index * 0.08,
             }}
-            className="group overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-blue-500/10"
+            className="group relative overflow-hidden rounded-[1.5rem] border border-zinc-800/80 bg-[linear-gradient(145deg,rgba(17,24,39,0.95),rgba(9,12,20,0.96))] shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_24px_60px_-30px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-[0_0_0_1px_rgba(59,130,246,0.16),0_26px_80px_-28px_rgba(59,130,246,0.35)]"
           >
-
-            <div>
-
-                            {/* LEFT IMAGE */}
-
-              <div className="relative h-40 overflow-hidden bg-zinc-950">
-
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.12),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(147,197,253,0.08),transparent_35%)] opacity-80 transition duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-px rounded-[1.5rem] border border-white/5" />
+            <div className="relative flex h-full flex-col">
+              <div className="relative h-56 overflow-hidden rounded-t-[1.5rem] bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(3,7,18,1))] sm:h-60">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.16),transparent_55%)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent" />
                 <Image
                   src={project.image}
                   alt={project.title}
                   width={900}
                   height={700}
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                  className="relative h-full w-full object-contain bg-transparent p-3 shadow-inner transition duration-700 group-hover:scale-[1.04]"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
-                <div className="absolute left-8 top-8">
-
-                  <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-300">
-
+                <div className="absolute left-4 top-4 sm:left-5 sm:top-5">
+                  <span className="rounded-full border border-blue-400/30 bg-blue-500/10 px-3 py-1.5 text-[11px] font-medium text-blue-200 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-md sm:text-sm">
                     {project.category}
-
                   </span>
-
                 </div>
-
               </div>
 
-              {/* RIGHT CONTENT */}
-
-              <div className="p-6">
-
-                <div>
-
-                  <div className="mb-6 flex items-center gap-3 text-gray-400">
-
-                    <FaCalendarAlt />
-
-                    <span>{project.year}</span>
-
-                  </div>
-
-                  <h3 className="mb-4 text-2xl font-bold text-white">
-
-                    {project.title}
-
-                  </h3>
-
-                  <p className="text-gray-400 leading-7">
-
-                    {project.description}
-
-                  </p>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-
-                    {project.technologies.map((tech) => (
-
-                      <span
-                        key={tech}
-                        className="tech-tag rounded-full px-5 py-2 text-sm text-gray-300"
-                      >
-                        {tech}
-                      </span>
-
-                    ))}
-
-                  </div>
-
+              <div className="flex flex-1 flex-col p-4 sm:p-5">
+                <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <FaCalendarAlt className="text-[0.8rem]" />
+                  <span>{project.year}</span>
                 </div>
 
-                <div className="mt-8 flex gap-3">
+                <h3 className="mt-3 text-xl font-semibold tracking-tight text-white sm:text-[1.3rem]">
+                  {project.title}
+                </h3>
 
+                <p className="mt-2 line-clamp-3 text-sm leading-6 text-gray-400">
+                  {project.description}
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-medium text-gray-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
                   <a
                     href={project.github}
                     target="_blank"
-                    className="flex items-center gap-3 rounded-xl bg-blue-600 px-6 py-4 font-semibold text-white transition duration-300 hover:scale-105 hover:bg-blue-500"
+                    className="inline-flex items-center gap-2 rounded-xl bg-[linear-gradient(135deg,#2563eb,#3b82f6)] px-4 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgba(59,130,246,0.75)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[linear-gradient(135deg,#3b82f6,#60a5fa)] hover:shadow-[0_14px_30px_-12px_rgba(96,165,250,0.85)]"
                   >
-
                     <FaGithub />
-
                     GitHub
-
                   </a>
 
                   <a
                     href={project.demo}
-                    className="flex items-center gap-3 rounded-xl border border-zinc-700 px-6 py-4 font-semibold text-white transition duration-300 hover:border-blue-500"
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-400/40 hover:bg-white/10"
                   >
-
                     View Project
-
                     <FaArrowRight />
-
                   </a>
-
                 </div>
-
               </div>
-                          </div>
-
+            </div>
           </motion.div>
-
         ))}
-
       </div>
 
       {/* Bottom CTA */}
@@ -275,26 +231,21 @@ export default function Projects() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: .6 }}
-        className="mt-28 text-center"
+        transition={{ duration: 0.6 }}
+        className="mt-20 text-center md:mt-24"
       >
-
-        <p className="mb-6 text-lg text-gray-400">
+        <p className="mb-5 text-base text-gray-400">
           Interested in seeing more of my work?
         </p>
 
         <a
           href="https://github.com/Zlatan10x"
           target="_blank"
-          className="inline-flex items-center gap-3 rounded-2xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white transition duration-300 hover:scale-105 hover:bg-blue-500"
+          className="inline-flex items-center gap-3 rounded-2xl bg-blue-600 px-6 py-3.5 text-base font-semibold text-white transition duration-300 hover:scale-[1.01] hover:bg-blue-500"
         >
-
           <FaGithub />
-
           Visit My GitHub
-
         </a>
-
       </motion.div>
 
     </section>
